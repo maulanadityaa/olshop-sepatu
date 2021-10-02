@@ -8,8 +8,7 @@
                     <form wire:submit.prevent="store">
 
                         <label for="nama" class="col-md-12 col-form-label text-md-left">{{ 'Nama Produk' }}</label>
-                        <input type="text" wire:model="nama" class="form-control @error('nama') is-invalid @enderror"
-                            placeholder="Masukkan Title">
+                        <input type="text" wire:model="nama" class="form-control @error('nama') is-invalid @enderror">
                         @error('nama')
                             <span class="invalid-feedback">
                                 {{ $message }}
@@ -17,8 +16,7 @@
                         @enderror
 
                         <label for="harga" class="col-md-12 col-form-label text-md-left">{{ 'Harga Produk' }}</label>
-                        <input type="number" wire:model="harga" class="form-control @error('harga') is-invalid @enderror"
-                            placeholder="Masukkan Title">
+                        <input type="number" wire:model="harga" class="form-control @error('harga') is-invalid @enderror">
                         @error('harga')
                             <span class="invalid-feedback">
                                 {{ $message }}
@@ -27,7 +25,7 @@
 
                         <label for="berat" class="col-md-12 col-form-label text-md-left">{{ 'Berat' }}</label>
                         <input type="number" wire:model="berat"
-                            class="form-control @error('berat') is-invalid @enderror" placeholder="Masukkan Title">
+                            class="form-control @error('berat') is-invalid @enderror">
                         @error('berat')
                             <span class="invalid-feedback">
                                 {{ $message }}
