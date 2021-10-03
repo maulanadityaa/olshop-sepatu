@@ -2,13 +2,35 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Support\Facades\Auth;
+
 use Livewire\Component;
 use App\Models\Produk;
+use App\Models\Belanja;
 
 class Home extends Component
 {
     public $products = [];
     public $search, $min, $max;
+
+    public function beli($id){
+        if (!Auth::user()) {
+            return redirect()->route('login');
+        }
+
+        $produk = Produk::find($id);
+
+        Belanja::create(
+            [
+                'user_id' => Auth::user()->id,
+                'produk_id' => $produk->id,
+                'total_harga' => $produk->harga,
+                'status' => 0
+            ]
+        );
+
+        return redirect()->to('keranjang');
+    }
     public function render()
     {
         if ($this->max) {

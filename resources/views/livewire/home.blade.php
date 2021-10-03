@@ -32,7 +32,7 @@
                             <div class="row mt-2">
                                 <div class="col-md-12">
                                     <button class="btn btn-success btn-block"
-                                        wire:click="beli({{ $product->id }})">Beli</button>
+                                        wire:click="beli({{ $product->id }})"><i class="fas fa-cart-plus"></i> Beli</button>
                                 </div>
                             </div>
                         </div>
@@ -40,6 +40,6 @@
                 </div>
             @endforeach
         </div>
-        {{-- {{ dd($products->toArray()) }} --}}
     </section>
 </div>
+{{-- {{ dd($products->toArray()) }} --}}
