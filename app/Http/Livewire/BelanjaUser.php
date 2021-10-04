@@ -18,6 +18,8 @@ class BelanjaUser extends Component
     public function destroy($pesanan_id){
         $pesanan = Belanja::find($pesanan_id);
         $pesanan->delete();
+
+        return redirect()->to('keranjang');
     }
     public function render()
     {

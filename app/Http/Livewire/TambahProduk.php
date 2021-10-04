@@ -24,7 +24,7 @@ class TambahProduk extends Component
     public function store(){
         $this->validate(
             [
-                'nama' => 'required',
+                'nama' => 'required|min:10',
                 'harga' => 'required',
                 'berat' => 'required',
                 'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
