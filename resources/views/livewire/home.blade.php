@@ -22,7 +22,7 @@
                 <div class="col-md-4 mb-3">
                     <div class="card">
                         <div class="card-body text-center">
-                            <img src="{{ asset('storage/photos/' . $product->gambar) }}" width="250px" height="250px">
+                            <img src="{{ asset('storage/photos/'.$product->gambar) }}" width="250px" height="250px">
                             <div class="row-mt-2">
                                 <div class="col-md-12">
                                     <h5><strong>{{ $product->nama }}</strong></h5>

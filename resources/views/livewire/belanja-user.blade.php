@@ -22,8 +22,10 @@
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $pesanan->created_at }}</td>
                                     <td>
-                                        <?php $produk = \App\Models\Produk::where('id', $pesanan->produk_id)->first(); ?>
-                                        <img src="{{ asset('storage/photos/' . $produk->gambar) }}" width="60px">
+                                        @php
+                                            $produk = \App\Models\Produk::where('id', $pesanan->produk_id)->first();
+                                        @endphp
+                                        <img src="{{ asset('storage/photos/'.$produk->gambar) }}" width="60px">
                                         {{ $produk->nama }}
                                     </td>
                                     <td>
