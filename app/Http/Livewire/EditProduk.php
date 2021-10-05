@@ -17,6 +17,12 @@ class EditProduk extends Component
 
     public function mount($id)
     {
+        if(Auth::user()){
+            if(Auth::user()->level !== 1){
+                return redirect()->to('');
+            }
+        }
+        
         $product = Produk::findorFail($id);
         if ($product) {
             $this->product_id = $product->id;
