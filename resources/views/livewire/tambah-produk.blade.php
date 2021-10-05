@@ -30,6 +30,15 @@
                                 {{ $message }}
                             </span>
                         @enderror
+                        
+                        <label for="stock" class="col-md-12 col-form-label text-md-left">{{ 'Stock' }}</label>
+                        <input type="number" wire:model="stock"
+                            class="form-control @error('stock') is-invalid @enderror">
+                        @error('stock')
+                            <span class="invalid-feedback">
+                                {{ $message }}
+                            </span>
+                        @enderror
 
                         <label for="gambar"
                             class="col-md-12 col-form-label text-md-left">{{ 'Gambar Produk (*maks 2mb)' }}</label>

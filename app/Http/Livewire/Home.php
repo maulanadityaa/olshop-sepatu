@@ -20,6 +20,9 @@ class Home extends Component
 
         $produk = Produk::find($id);
 
+        $produk->stock = $produk->stock - 1;
+        $produk->save(); 
+
         Belanja::create(
             [
                 'user_id' => Auth::user()->id,
@@ -29,7 +32,7 @@ class Home extends Component
             ]
         );
 
-        return redirect()->to('keranjang');
+        return redirect()->to('');
     }
     public function render()
     {

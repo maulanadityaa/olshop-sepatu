@@ -1,13 +1,14 @@
 <div>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row mt-4">
             <div class="col">
                 <div class="table-responsive">
                     <table class="table text-center">
                         <thead>
                             <tr>
-                                <td><strong>No</strong>r</td>
+                                <td><strong>No</strong></td>
                                 <td><strong>Tanggal Pesan</strong></td>
+                                <td><strong>Gambar</strong></td>
                                 <td><strong>Nama Produk</strong></td>
                                 <td><strong>Status</strong></td>
                                 <td><strong>Total Harga</strong></td>
@@ -25,7 +26,9 @@
                                         @php
                                             $produk = \App\Models\Produk::where('id', $pesanan->produk_id)->first();
                                         @endphp
-                                        <img src="{{ asset('storage/photos/'.$produk->gambar) }}" width="60px">
+                                        <img src="{{ asset('storage/photos/'.$produk->gambar) }}" width="75px">
+                                    </td>
+                                    <td>
                                         {{ $produk->nama }}
                                     </td>
                                     <td>
@@ -43,7 +46,7 @@
                                     <td>
                                         @if ($pesanan->status == 0)
                                             <a href="{{ url('tambah-ongkir/' . $pesanan->id) }}"
-                                                class="btn btn-warning btn-block">Tambah Ongkir</a>
+                                                class="btn btn-warning btn-block"><i class="fas fa-shipping-fast"></i> Tambah Ongkir</a>
                                         @endif
                                         @if ($pesanan->status == 1)
                                             <a href="{{ url('bayar/' . $pesanan->id) }}"
@@ -57,7 +60,7 @@
                                     </td>
                                     <td>
                                         <button class="btn btn-danger btn-block"
-                                            wire:click="destroy({{ $pesanan->id }})">Hapus</button>
+                                            wire:click="destroy({{ $pesanan->id }})"><i class="far fa-trash-alt"></i></button>
                                     </td>
                                 </tr>
                             @empty

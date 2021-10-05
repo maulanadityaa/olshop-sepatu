@@ -21,8 +21,6 @@ Auth::routes();
 
 Route::get('/', \App\Http\Livewire\Home::class);
 Route::get('/tambah-produk', \App\Http\Livewire\TambahProduk::class);
+Route::get('/dashboard', \App\Http\Livewire\DashboardAdmin::class)->name('dashboard');
+Route::get('/edit-produk/{id}', \App\Http\Livewire\EditProduk::class)->name('edit-produk');
 Route::get('/keranjang', \App\Http\Livewire\BelanjaUser::class);
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -12,7 +12,7 @@ use Livewire\Component;
 
 class TambahProduk extends Component
 {
-    public $nama,$harga,$berat,$gambar;
+    public $nama,$harga,$berat,$gambar,$stock;
     use WithFileUploads;
     public function mount(){
         if(Auth::user()){
@@ -27,6 +27,7 @@ class TambahProduk extends Component
                 'nama' => 'required|min:10',
                 'harga' => 'required',
                 'berat' => 'required',
+                'stock' => 'required|numeric|min:3',
                 'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             ]
         );
@@ -39,6 +40,7 @@ class TambahProduk extends Component
                 'nama' => $this->nama,
                 'harga' => $this->harga,
                 'berat' => $this->berat,
+                'stock' => $this->stock,
                 'gambar' => $nama_gambar
             ]
         );

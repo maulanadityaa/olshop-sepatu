@@ -13,6 +13,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -30,10 +31,10 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+        <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #38c172;">
+            <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ 'SP-Shop' }}
+                    <i class="fab fa-shopify"></i> {{ 'SP-Shop' }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -48,18 +49,17 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto text-white">
                         <!-- Authentication Links -->
                         @if (Auth::user())
                             @if (Auth::user()->level == 1)
                                 <li class="nav-item">
-                                    <a class="nav-link btn btn-success text-white" href="{{ url('tambah-produk') }}"><i
+                                    <a class="nav-link btn btn-light text-success"
+                                        href="{{ url('tambah-produk') }}"><i
                                             class="far fa-plus-square"></i>{{ ' Tambah Produk' }}</a>
                                 </li>
                             @else
-
                                 @php
-                                    $id = Auth::user()->id;
                                     $keranjang = \App\Models\Belanja::where('user_id', Auth::user()->id)->value('produk_id');
                                 @endphp
                                 @if ($keranjang > 0)
@@ -82,34 +82,43 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}"><i
+                                            class="fas fa-sign-in-alt"></i> {{ __('Login') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}"><i
+                                            class="fas fa-user-plus"></i> {{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <i class="fas fa-user"></i> {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                            @if (Auth::user()->level == 1)
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        <i class="fas fa-user"></i> {{ Auth::user()->name }}
                                     </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('dashboard') }}">
+                                            <i class="fas fa-sign-out-alt"></i>{{ 'Dashboard' }}
+                                        </a>
+                                    </div>
+                                </li>
+                            @endif
+                            <div>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();"><i
+                                            class="fas fa-sign-out-alt"></i> {{ __('Logout') }}</a>
+                                </li>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                        class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
                         @endguest
                     </ul>
                 </div>
