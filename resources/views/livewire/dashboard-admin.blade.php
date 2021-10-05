@@ -38,7 +38,7 @@
                                     </td>
                                     <td>
                                         <div class="container">
-                                            <a class="btn btn-primary btn-block" wire:click="update({{ $product->id }})">EDIT</a>
+                                            <a href="{{ route('edit-produk', $product->id) }}" class="btn btn-primary btn-block">EDIT</a>
                                             <a class="btn btn-danger btn-block" wire:click="destroy({{ $product->id }})"><i
                                                     class="far fa-trash-alt"></i></a>
                                         </div>

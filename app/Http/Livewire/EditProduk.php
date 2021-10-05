@@ -4,17 +4,20 @@ namespace App\Http\Livewire;
 
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Storage;
+
 use Livewire\Component;
 use App\Models\Produk;
+use Livewire\WithFileUploads;
 
 class EditProduk extends Component
 {
-    public $product_id,$nama,$harga,$berat,$gambar,$stock;
-    //private $produk_id;
+    public $product_id, $nama, $harga, $berat, $gambar, $stock;
+    use WithFileUploads;
 
-    public function mount($id){
-        $product = Produk::find($this->$id);
-
+    public function mount($id)
+    {
+        $product = Produk::findorFail($id);
         if ($product) {
             $this->product_id = $product->id;
             $this->nama = $product->nama;
@@ -24,7 +27,20 @@ class EditProduk extends Component
             $this->stock = $product->stock;
         }
     }
-    public function update(){
+
+    public function updated($field)
+    {
+        $this->validateOnly($field, [
+            'nama' => 'required|min:10',
+            'harga' => 'required',
+            'berat' => 'required',
+            'stock' => 'required|numeric|min:3',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+    }
+
+    public function update()
+    {
         $this->validate(
             [
                 'nama' => 'required|min:10',
@@ -34,22 +50,25 @@ class EditProduk extends Component
                 'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             ]
         );
+        if($this->product_id) {
 
-        if($this->product_id){
-            $product = Produk::find($this->product_id);
+            $product = Produk::findOrFail($this->product_id);
+            
+            $nama_gambar = md5($this->gambar.microtime()).'.'.$this->gambar->extension();
+            Storage::disk('public')->putFileAs('photos', $this->gambar, $nama_gambar);
 
-            if($product){
+            if($product) {
                 $product->update([
                     'nama' => $this->nama,
-                    'gambar' => $this->gambar,
+                    'gambar' => $nama_gambar,
                     'berat' => $this->berat,
                     'harga' => $this->harga,
                     'stock' => $this->stock,
                 ]);
             }
-
-            return redirect()->to('dashboard');
         }
+        return redirect()->route('dashboard');
+        // return dd($this->productId);
     }
     public function render()
     {
