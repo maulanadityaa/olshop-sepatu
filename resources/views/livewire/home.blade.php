@@ -63,8 +63,7 @@
                                 <div class="row mt-2">
                                     <div class="col-md-12">
                                         <button class="btn btn-success btn-block"
-                                            wire:click="beli({{ $product->id }})"><i class="fas fa-cart-plus"></i>
-                                            + Keranjang</button>
+                                            wire:click="beli({{ $product->id }})">+ Keranjang <i class="fas fa-cart-plus"></i></button>
                                     </div>
                                 </div>
                             </div>
