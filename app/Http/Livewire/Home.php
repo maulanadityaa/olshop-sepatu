@@ -7,13 +7,15 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use App\Models\Produk;
 use App\Models\Belanja;
+use Livewire\WithPagination;
 
 class Home extends Component
 {
-    public $products = [];
+    use WithPagination;
     public $search, $min, $max;
 
-    public function beli($id){
+    public function beli($id)
+    {
         if (!Auth::user()) {
             return redirect()->route('login');
         }
@@ -21,7 +23,7 @@ class Home extends Component
         $produk = Produk::find($id);
 
         $produk->stock = $produk->stock - 1;
-        $produk->save(); 
+        $produk->save();
 
         Belanja::create(
             [
@@ -49,13 +51,30 @@ class Home extends Component
         }
 
         if ($this->search) {
-            $this->products = Produk::where('nama', 'like', '%' . $this->search . '%')
-                                        ->where('harga', '>=', $harga_min)
-                                        ->where('harga', '<=', $harga_max)->get();
-        } else{
-            $this->products = Produk::where('harga', '>=', $harga_min)
-                                        ->where('harga', '<=', $harga_max)->get();
+            $products = Produk::where('nama', 'like', '%' . $this->search . '%')
+                ->where('harga', '>=', $harga_min)
+                ->where('harga', '<=', $harga_max)
+                ->where('stock', '>=', 1)
+                ->paginate(6);
+        } 
+        else if($this->min || $this->max){
+            $products = Produk::where('harga', '>=', $harga_min)
+                ->where('harga', '<=', $harga_max)
+                ->where('stock', '>=', 1)
+                ->paginate(6);
         }
-        return view('livewire.home')->extends('layouts.app')->section('content');
+        // else if($this->max){
+        //     $products = Produk::where('harga', '<=', $harga_max)
+        //         ->where('stock', '>=', 1)
+        //         ->paginate(6);
+        // }
+        else {
+            $products = Produk::where('stock', '>=', 1)
+                ->latest()
+                ->paginate(6);
+        }
+        return view('livewire.home', [
+            'products' => $products
+        ])->extends('layouts.app')->section('content');
     }
 }

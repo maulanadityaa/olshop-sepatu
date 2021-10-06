@@ -1,7 +1,7 @@
 <div>
     <div class="align-self-center">
         <div class="container">
-            <div id="carouselExampleIndicators" class="carousel slide rounded-md" data-ride="carousel">
+            <div id="carouselExampleIndicators" class="carousel slide rounded" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -9,13 +9,13 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="../assets/carousel-1.jpg" class="d-block w-100" alt="...">
+                        <img src="../assets/carousel-1.jpg" class="d-block w-100 rounded-lg" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="../assets/carousel-2.jpg" class="d-block w-100" alt="...">
+                        <img src="../assets/carousel-2.jpg" class="d-block w-100 rounded-lg" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="../assets/carousel-3.jpg" class="d-block w-100" alt="...">
+                        <img src="../assets/carousel-3.jpg" class="d-block w-100 rounded-lg" alt="...">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -48,10 +48,10 @@
     <section class="products">
         <div class="container-md">
             <div class="row row-cols-1 row-cols-md-3 g-4">
-                @foreach ($products as $product)
+                @forelse ($products as $product)
                     <div class="col-sm-4">
-                        <div class="card border-secondary mb-3">
-                            <div class="card-header">Sepatu</div>
+                        <div class="card border-success mb-3">
+                            <div class="card-header text-white bg-success mb-3">Sepatu</div>
                             <div class="card-body text-center">
                                 <img src="{{ asset('storage/photos/' . $product->gambar) }}" class="img-fluid">
                                 <div class="row-mt-2">
@@ -63,15 +63,25 @@
                                 <div class="row mt-2">
                                     <div class="col-md-12">
                                         <button class="btn btn-success btn-block"
-                                            wire:click="beli({{ $product->id }})">+ Keranjang <i class="fas fa-cart-plus"></i></button>
+                                            wire:click="beli({{ $product->id }})">+ Keranjang <i
+                                                class="fas fa-cart-plus"></i></button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <div class="container">
+                        <div class="text-center">
+                            <strong>Produk yang Kamu Cari Tidak Ada</strong>
+                        </div>
+                    </div>
+                @endforelse
             </div>
         </div>
     </section>
+    <div class="d-flex justify-content-center">
+        {{ $products->links('pagination::bootstrap-4') }}
+    </div>
 </div>
 {{-- {{ dd($products->toArray()) }} --}}

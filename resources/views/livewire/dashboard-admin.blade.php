@@ -2,6 +2,9 @@
     <div class="container-fluid">
         <div class="row mt-4">
             <div class="col">
+                <a class="nav-link btn btn-info" href="{{ url('tambah-produk') }}"><i
+                        class="far fa-plus-square"></i>{{ ' Tambah Produk' }}</a>
+                <br>
                 <div class="table-responsive">
                     <table class="table text-center">
                         <thead>
@@ -38,8 +41,10 @@
                                     </td>
                                     <td>
                                         <div class="container">
-                                            <a href="{{ route('edit-produk', $product->id) }}" class="btn btn-primary btn-block">EDIT</a>
-                                            <a class="btn btn-danger btn-block" wire:click="destroy({{ $product->id }})"><i
+                                            <a href="{{ route('edit-produk', $product->id) }}"
+                                                class="btn btn-primary btn-block">EDIT</a>
+                                            <a class="btn btn-danger btn-block"
+                                                wire:click="destroy({{ $product->id }})"><i
                                                     class="far fa-trash-alt"></i></a>
                                         </div>
                                     </td>
@@ -54,5 +59,5 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
 </div>
