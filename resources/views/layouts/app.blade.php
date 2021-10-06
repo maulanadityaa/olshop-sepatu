@@ -87,6 +87,10 @@
                                                 class="fas fa-shopping-basket"></i>{{ ' Keranjang' }}</a>
                                     </li>
                                 @endif
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#"><i class="fas fa-user"></i>
+                                        {{ Auth::user()->name }}</a>
+                                </li>
                             @endif
 
                         @endif
@@ -124,7 +128,7 @@
                             <div>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();"><i
+                                                            document.getElementById('logout-form').submit();"><i
                                             class="fas fa-sign-out-alt"></i> {{ __('Logout') }}</a>
                                 </li>
 
