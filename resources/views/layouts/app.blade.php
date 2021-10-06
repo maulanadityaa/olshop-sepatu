@@ -114,7 +114,9 @@
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('dashboard') }}">
-                                            <img src="https://img.icons8.com/material-outlined/15/000000/dashboard-layout.png"/> {{ 'Dashboard' }}
+                                            <img
+                                                src="https://img.icons8.com/material-outlined/15/000000/dashboard-layout.png" />
+                                            {{ 'Dashboard' }}
                                         </a>
                                     </div>
                                 </li>
@@ -122,7 +124,7 @@
                             <div>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();"><i
+                                                        document.getElementById('logout-form').submit();"><i
                                             class="fas fa-sign-out-alt"></i> {{ __('Logout') }}</a>
                                 </li>
 
@@ -145,9 +147,10 @@
 <footer>
     <div class="text-center p-4" style="background-color: rgba(116, 255, 174, 0.473);">
         © 2021 Copyright :
-        <a class="text-reset fw-bold" href="https://github.com/maulanadityaa"><i class="fab fa-github"></i> maulanadityaa</a>
-      </div>
-      <!-- Copyright -->
+        <a class="text-reset fw-bold" href="https://github.com/maulanadityaa"><i class="fab fa-github"></i>
+            maulanadityaa</a>
+    </div>
+    <!-- Copyright -->
 </footer>
 
 </html>

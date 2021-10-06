@@ -17,9 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::get('/', \App\Http\Livewire\Home::class);
+Route::get('/', \App\Http\Livewire\Home::class)->middleware(['verified']);
 Route::get('/tambah-produk', \App\Http\Livewire\TambahProduk::class);
 Route::get('/dashboard', \App\Http\Livewire\DashboardAdmin::class)->name('dashboard');
 Route::get('/edit-produk/{id}', \App\Http\Livewire\EditProduk::class)->name('edit-produk');
