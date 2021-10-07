@@ -14,6 +14,18 @@ class Home extends Component
     use WithPagination;
     public $search, $min, $max;
 
+    public function acak($panjang)
+    {
+        $karakter = '123456789';
+        $string = '';
+        for ($i = 0; $i < $panjang; $i++) {
+            $pos = rand(0, strlen($karakter) - 1);
+            $string .= $karakter{
+            $pos};
+        }
+        return $string;
+    }
+
     public function beli($id)
     {
         if (!Auth::user()) {
@@ -25,8 +37,11 @@ class Home extends Component
         $produk->stock = $produk->stock - 1;
         $produk->save();
 
+        $belanja_id = $this->acak(8);
+        // dd($belanja_id);
         Belanja::create(
             [
+                'id' => $belanja_id,
                 'user_id' => Auth::user()->id,
                 'produk_id' => $produk->id,
                 'total_harga' => $produk->harga,
@@ -36,7 +51,7 @@ class Home extends Component
 
         return redirect()->to('');
     }
-    
+
     public function render()
     {
         if ($this->max) {
@@ -57,14 +72,12 @@ class Home extends Component
                 ->where('harga', '<=', $harga_max)
                 ->where('stock', '>=', 1)
                 ->paginate(6);
-        } 
-        else if($this->min || $this->max){
+        } else if ($this->min || $this->max) {
             $products = Produk::where('harga', '>=', $harga_min)
                 ->where('harga', '<=', $harga_max)
                 ->where('stock', '>=', 1)
                 ->paginate(6);
-        }
-        else {
+        } else {
             $products = Produk::where('stock', '>=', 1)
                 ->latest()
                 ->paginate(6);
