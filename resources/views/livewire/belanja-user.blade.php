@@ -17,7 +17,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $no = 1 ?>
+                            <?php $no = 1; ?>
                             @forelse ($keranjang as $pesanan)
                                 <tr>
                                     <td>{{ $no++ }}</td>
@@ -26,7 +26,7 @@
                                         @php
                                             $produk = \App\Models\Produk::where('id', $pesanan->produk_id)->first();
                                         @endphp
-                                        <img src="{{ asset('storage/photos/'.$produk->gambar) }}" width="75px">
+                                        <img src="{{ asset('storage/photos/' . $produk->gambar) }}" width="75px">
                                     </td>
                                     <td>
                                         {{ $produk->nama }}
@@ -45,8 +45,27 @@
                                     <td><strong>Rp. {{ number_format($pesanan->total_harga) }}</strong></td>
                                     <td>
                                         @if ($pesanan->status == 0)
-                                            <a href="{{ url('tambah-ongkir/' . $pesanan->id) }}"
-                                                class="btn btn-warning btn-block"><i class="fas fa-shipping-fast"></i> Tambah Ongkir</a>
+                                            <a href="{{ route('tambah-ongkir', $pesanan->id) }}" class="btn btn-warning btn-block" data-toggle="modal" data-target="#modalFormOngkir"><i class="fas fa-shipping-fast"></i>
+                                                Tambah Ongkir</a>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="modalFormOngkir" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Pilih
+                                                            </h5>
+                                                            <button type="button" class="close"
+                                                                data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            @livewire('tambah-ongkir', ['id' => $pesanan->id])
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         @endif
                                         @if ($pesanan->status == 1)
                                             <a href="{{ url('bayar/' . $pesanan->id) }}"
@@ -60,7 +79,8 @@
                                     </td>
                                     <td>
                                         <button class="btn btn-danger btn-block"
-                                            wire:click="destroy({{ $pesanan->id }})"><i class="far fa-trash-alt"></i></button>
+                                            wire:click="destroy({{ $pesanan->id }})"><i
+                                                class="far fa-trash-alt"></i></button>
                                     </td>
                                 </tr>
                             @empty

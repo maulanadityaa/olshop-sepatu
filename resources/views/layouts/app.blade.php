@@ -133,9 +133,10 @@
                             @endif
                             <div>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                    document.getElementById('logout-form').submit();"><i
-                                            class="fas fa-sign-out-alt"></i> {{ __('Logout') }}</a>
+                                    <a class="nav-link" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                                        document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i>
+                                        {{ __('Logout') }}</a>
                                 </li>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -152,6 +153,11 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <script>
+            window.addEventListener('closeModal', event => {
+                $("#modalForm").modal('hide');
+            })
+        </script>
     </div>
 </body>
 <footer>

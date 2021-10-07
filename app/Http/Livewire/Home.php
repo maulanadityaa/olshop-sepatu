@@ -36,6 +36,7 @@ class Home extends Component
 
         return redirect()->to('');
     }
+    
     public function render()
     {
         if ($this->max) {
@@ -63,11 +64,6 @@ class Home extends Component
                 ->where('stock', '>=', 1)
                 ->paginate(6);
         }
-        // else if($this->max){
-        //     $products = Produk::where('harga', '<=', $harga_max)
-        //         ->where('stock', '>=', 1)
-        //         ->paginate(6);
-        // }
         else {
             $products = Produk::where('stock', '>=', 1)
                 ->latest()

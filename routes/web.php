@@ -23,4 +23,5 @@ Route::get('/', \App\Http\Livewire\Home::class)->middleware(['verified']);
 Route::get('/tambah-produk', \App\Http\Livewire\TambahProduk::class);
 Route::get('/dashboard', \App\Http\Livewire\DashboardAdmin::class)->name('dashboard');
 Route::get('/edit-produk/{id}', \App\Http\Livewire\EditProduk::class)->name('edit-produk');
-Route::get('/keranjang', \App\Http\Livewire\BelanjaUser::class);
+Route::get('/keranjang', \App\Http\Livewire\BelanjaUser::class)->name('keranjang');
+Route::get('/tambah-ongkir/{id}', \App\Http\Livewire\TambahOngkir::class)->name('tambah-ongkir');

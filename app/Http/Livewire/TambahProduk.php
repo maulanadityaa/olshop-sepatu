@@ -45,8 +45,20 @@ class TambahProduk extends Component
             ]
         );
 
-        return redirect()->to('');
+        $this->dispatchBrowserEvent('closeModal');
+        $this->cleanVars();
+
+        return redirect()->to('dashboard');
     }
+
+    private function cleanVars(){
+        $this->nama = null;
+        $this->harga = null;
+        $this->berat = null;
+        $this->stock = null;
+        $this->gambar = null;
+    }
+    
     public function render()
     {
         return view('livewire.tambah-produk')->extends('layouts.app')->section('content');
