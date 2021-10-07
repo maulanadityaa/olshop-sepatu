@@ -67,23 +67,30 @@
                         @if (Auth::user())
                             @if (Auth::user()->level == 1)
                                 <li class="nav-item">
-                                    <a class="nav-link btn btn-light text-success" href="{{ route('dashboard') }}"><svg
-                                            xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15"
-                                            viewBox="0 0 172 172" style=" fill:#000000;">
-                                            <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1"
-                                                stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"
-                                                stroke-dasharray="" stroke-dashoffset="0" font-family="none"
-                                                font-weight="none" font-size="none" text-anchor="none"
-                                                style="mix-blend-mode: normal">
-                                                <path d="M0,172v-172h172v172z" fill="none"></path>
-                                                <g fill="#2ecc71">
-                                                    <path
-                                                        d="M64.5,14.33333h-35.83333c-7.90483,0 -14.33333,6.4285 -14.33333,14.33333v50.16667c0,7.90483 6.4285,14.33333 14.33333,14.33333h35.83333c7.90483,0 14.33333,-6.4285 14.33333,-14.33333v-50.16667c0,-7.90483 -6.4285,-14.33333 -14.33333,-14.33333zM143.33333,14.33333h-35.83333c-7.90483,0 -14.33333,6.4285 -14.33333,14.33333v21.5c0,7.90483 6.4285,14.33333 14.33333,14.33333h35.83333c7.90483,0 14.33333,-6.4285 14.33333,-14.33333v-21.5c0,-7.90483 -6.4285,-14.33333 -14.33333,-14.33333zM64.5,107.5h-35.83333c-7.90483,0 -14.33333,6.4285 -14.33333,14.33333v21.5c0,7.90483 6.4285,14.33333 14.33333,14.33333h35.83333c7.90483,0 14.33333,-6.4285 14.33333,-14.33333v-21.5c0,-7.90483 -6.4285,-14.33333 -14.33333,-14.33333zM143.33333,78.83333h-35.83333c-7.90483,0 -14.33333,6.4285 -14.33333,14.33333v50.16667c0,7.90483 6.4285,14.33333 14.33333,14.33333h35.83333c7.90483,0 14.33333,-6.4285 14.33333,-14.33333v-50.16667c0,-7.90483 -6.4285,-14.33333 -14.33333,-14.33333z">
-                                                    </path>
+                                    <div class="btn-group">
+                                        <button class="nav-link btn btn-light dropdown-toggle text-success"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg
+                                                xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15"
+                                                height="15" viewBox="0 0 172 172" style=" fill:#000000;">
+                                                <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1"
+                                                    stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"
+                                                    stroke-dasharray="" stroke-dashoffset="0" font-family="none"
+                                                    font-weight="none" font-size="none" text-anchor="none"
+                                                    style="mix-blend-mode: normal">
+                                                    <path d="M0,172v-172h172v172z" fill="none"></path>
+                                                    <g fill="#2ecc71">
+                                                        <path
+                                                            d="M64.5,14.33333h-35.83333c-7.90483,0 -14.33333,6.4285 -14.33333,14.33333v50.16667c0,7.90483 6.4285,14.33333 14.33333,14.33333h35.83333c7.90483,0 14.33333,-6.4285 14.33333,-14.33333v-50.16667c0,-7.90483 -6.4285,-14.33333 -14.33333,-14.33333zM143.33333,14.33333h-35.83333c-7.90483,0 -14.33333,6.4285 -14.33333,14.33333v21.5c0,7.90483 6.4285,14.33333 14.33333,14.33333h35.83333c7.90483,0 14.33333,-6.4285 14.33333,-14.33333v-21.5c0,-7.90483 -6.4285,-14.33333 -14.33333,-14.33333zM64.5,107.5h-35.83333c-7.90483,0 -14.33333,6.4285 -14.33333,14.33333v21.5c0,7.90483 6.4285,14.33333 14.33333,14.33333h35.83333c7.90483,0 14.33333,-6.4285 14.33333,-14.33333v-21.5c0,-7.90483 -6.4285,-14.33333 -14.33333,-14.33333zM143.33333,78.83333h-35.83333c-7.90483,0 -14.33333,6.4285 -14.33333,14.33333v50.16667c0,7.90483 6.4285,14.33333 14.33333,14.33333h35.83333c7.90483,0 14.33333,-6.4285 14.33333,-14.33333v-50.16667c0,-7.90483 -6.4285,-14.33333 -14.33333,-14.33333z">
+                                                        </path>
+                                                    </g>
                                                 </g>
-                                            </g>
-                                        </svg>
-                                        {{ 'Dashboard' }}</a>
+                                            </svg>
+                                            {{ 'Admin Panel' }}</button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="{{ route('dashboard') }}">Manajemen Produk</a>
+                                            <a class="dropdown-item" href="{{ route('admin-pesanan') }}">Manajemen Pesanan</a>
+                                        </div>
+                                    </div>
                                 </li>
                             @else
                                 @php
@@ -135,7 +142,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                        document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i>
+                                                                            document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i>
                                         {{ __('Logout') }}</a>
                                 </li>
 
