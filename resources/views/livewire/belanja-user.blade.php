@@ -3,17 +3,18 @@
         <div class="row mt-4">
             <div class="col">
                 <div class="table-responsive">
-                    <table class="table text-center">
+                    <table class="table table-bordered border-secondary text-center">
                         <thead>
                             <tr>
-                                <td><strong>No</strong></td>
-                                <td><strong>Tanggal Pesan</strong></td>
-                                <td><strong>Gambar</strong></td>
-                                <td><strong>Nama Produk</strong></td>
-                                <td><strong>Status</strong></td>
-                                <td><strong>Total Harga</strong></td>
-                                <td><strong>Aksi</strong></td>
-                                <td><strong>Hapus</strong></td>
+                                <th scope="col"><strong>No</strong></th>
+                                <th scope="col"><strong>Tanggal Pesan</strong></th>
+                                <th scope="col"><strong>Gambar</strong></th>
+                                <th scope="col"><strong>Nama Produk</strong></th>
+                                <th scope="col"><strong>Status</strong></th>
+                                <th scope="col"><strong>Total Harga</strong></th>
+                                <th scope="col"><strong>Kurir</strong></th>
+                                <th scope="col"><strong>Aksi</strong></th>
+                                <th scope="col"><strong>Hapus</strong></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -43,6 +44,7 @@
                                         @endif
                                     </td>
                                     <td><strong>Rp. {{ number_format($pesanan->total_harga) }}</strong></td>
+                                    <td><strong>{{ $pesanan->kurir }}</strong></td>
                                     <td>
                                         @if ($pesanan->status == 0)
                                             <a href="{{ route('tambah-ongkir', $pesanan->id) }}" class="btn btn-warning btn-block" data-toggle="modal" data-target="#modalFormOngkir"><i class="fas fa-shipping-fast"></i>

@@ -25,7 +25,7 @@
     @livewireScripts
     <!-- Produces: -->
     <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js"
-        data-turbolinks-eval="false" data-turbo-eval="false"></script>
+        data-turbolinks-eval="false" data-turbo-eval="false" defer></script>
 
 </head>
 
@@ -169,8 +169,6 @@
             })
         </script>
     </div>
-    <script src="https://app.sandbox.midtrans.com/snap/snap.js"
-    data-client-key="{{ config('services.midtrans.clientKey') }}"></script>
 </body>
 <footer>
     <div class="text-center p-4" style="background-color: rgba(116, 255, 174, 0.473);">

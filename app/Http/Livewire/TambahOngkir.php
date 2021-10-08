@@ -51,8 +51,8 @@ class TambahOngkir extends Component
     public function saveOngkir($biaya){
         $this->belanja->total_harga += $biaya;
         $this->belanja->status = 1;
+        $this->belanja->kurir = $this->jasa;
         $this->belanja->update();
-
         return redirect()->route('keranjang');
     }
 

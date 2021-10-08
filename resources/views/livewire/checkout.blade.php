@@ -108,44 +108,47 @@
 
                 </div>
                 @endif
-                <form id="payment-form" method="GET" action="Payment">
-                    <input type="hidden" name="result_data" id="result-data" value="">
+                <form id="payment-form" method="get" action="payment">
+                    {{-- <input type="hidden" name="result_type" id="result-type" value=""></div> --}}
+                    <input type="hidden" name="result_data" id="result-data" value=""></div>
                 </form>
             </div>
+            {{-- <pre><div id="result-json">JSON result will appear here after payment:<br></div></pre> --}}
         </div>
+            
+        <script src="https://app.sandbox.midtrans.com/snap/snap.js"
+        data-client-key="{{ config('services.midtrans.clientKey') }}"></script>
         <script type="text/javascript">
-            var payButton = document.getElementById('pay-button');
-            payButton.addEventListener('click', function() {
-                // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
-                var resultType = document.getElementById('result-type');
+            document.getElementById('pay-button').onclick = function(){
                 var resultData = document.getElementById('result-data');
+                var resultType = document.getElementById('result-type');
 
-                function changeResult(type, data) {
-                    $("result-type").val(type);
-                    $("result-data").val(JSON.stringify(data));
+                function changeResult(type, data){
+                    $('#result-type').val(type);
+                    $('#result-data').val(JSON.stringify(data));
+                    // resultType.innerHTML = type;
+                    // resultData.innerHTML = JSON.stringify(data);
                 }
 
-                window.snap.pay('{{ $snapToken }}', {
-                    onSuccess: function(result) {
+                snap.pay('{{ $snapToken }}', {
+                    onSuccess: function(result){
                         changeResult('success', result);
                         console.log(result.status_message);
                         console.log(result);
-                        $('#payment-form').submit();
+                        $("#payment-form").submit();
                     },
-                    onPending: function(result) {
+                    onPending: function(result){
                         changeResult('pending', result);
                         console.log(result.status_message);
-                        console.log(result);
-                        $('#payment-form').submit();
+                        $("#payment-form").submit();
                     },
-                    onError: function(result) {
-                        changeResult('error', result);
+                    onPending: function(result){
+                        changeResult('pending', result);
                         console.log(result.status_message);
-                        console.log(result);
-                        $('#payment-form').submit();
+                        $("#payment-form").submit();
                     }
                 });
-            });
+            };
         </script>
     </div>
 </div>

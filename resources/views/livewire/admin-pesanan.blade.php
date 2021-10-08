@@ -12,6 +12,7 @@
                                 <td><strong>Nama Pemesan</strong></td>
                                 <td><strong>Nama Produk</strong></td>
                                 <td><strong>Total Harga</strong></td>
+                                <td><strong>Kurir</strong></td>
                                 <td><strong>Status</strong></td>
                                 <td><strong>Aksi</strong></td>
                             </tr>
@@ -37,6 +38,9 @@
                                     </td>
                                     <td>
                                         <strong>Rp. {{ number_format($pesan->total_harga) }}</strong>
+                                    </td>
+                                    <td>
+                                        <strong>{{ $pesan->kurir }}</strong>
                                     </td>
                                     <td>
                                         @if ($pesan->status == 0)
