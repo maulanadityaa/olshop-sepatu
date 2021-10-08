@@ -26,3 +26,4 @@ Route::get('/admin/pesanan/', \App\Http\Livewire\AdminPesanan::class)->name('adm
 Route::get('/edit-produk/{id}', \App\Http\Livewire\EditProduk::class)->name('edit-produk');
 Route::get('/keranjang', \App\Http\Livewire\BelanjaUser::class)->name('keranjang');
 Route::get('/tambah-ongkir/{id}', \App\Http\Livewire\TambahOngkir::class)->name('tambah-ongkir');
+Route::get('/keranjang/checkout/{id}', \App\Http\Livewire\Checkout::class)->name('checkout');

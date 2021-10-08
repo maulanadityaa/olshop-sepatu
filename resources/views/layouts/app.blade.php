@@ -87,8 +87,10 @@
                                             </svg>
                                             {{ 'Admin Panel' }}</button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="{{ route('dashboard') }}">Manajemen Produk</a>
-                                            <a class="dropdown-item" href="{{ route('admin-pesanan') }}">Manajemen Pesanan</a>
+                                            <a class="dropdown-item" href="{{ route('dashboard') }}">Manajemen
+                                                Produk</a>
+                                            <a class="dropdown-item" href="{{ route('admin-pesanan') }}">Manajemen
+                                                Pesanan</a>
                                         </div>
                                     </div>
                                 </li>
@@ -142,7 +144,8 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                            document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i>
+                                                                                                document.getElementById('logout-form').submit();"><i
+                                            class="fas fa-sign-out-alt"></i>
                                         {{ __('Logout') }}</a>
                                 </li>
 
@@ -166,6 +169,8 @@
             })
         </script>
     </div>
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js"
+    data-client-key="{{ config('services.midtrans.clientKey') }}"></script>
 </body>
 <footer>
     <div class="text-center p-4" style="background-color: rgba(116, 255, 174, 0.473);">

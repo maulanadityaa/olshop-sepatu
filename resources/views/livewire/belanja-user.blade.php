@@ -53,7 +53,7 @@
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Pilih
+                                                            <h5 class="modal-title" id="exampleModalLabel"><strong>Pilih Jasa Pengiriman Barang</strong>
                                                             </h5>
                                                             <button type="button" class="close"
                                                                 data-dismiss="modal" aria-label="Close">
@@ -68,8 +68,8 @@
                                             </div>
                                         @endif
                                         @if ($pesanan->status == 1)
-                                            <a href="{{ url('bayar/' . $pesanan->id) }}"
-                                                class="btn btn-primary btn-block">Pilih
+                                            <a href="{{ route('checkout', $pesanan->id) }}"
+                                                class="btn btn-primary btn-block"><i class="fas fa-file-invoice"></i> Pilih
                                                 Pembayaran</a>
                                         @endif
                                         @if ($pesanan->status == 2)

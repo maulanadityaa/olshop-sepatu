@@ -5,7 +5,6 @@
                 <div class="card-header">{{ 'Tambah Produk' }}</div>
                 <div class="card-body">
                     <form wire:submit.prevent="store">
-
                         <label for="nama" class="col-md-12 col-form-label text-md-left">{{ 'Nama Produk' }}</label>
                         <input type="text" wire:model="nama" class="form-control @error('nama') is-invalid @enderror">
                         @error('nama')

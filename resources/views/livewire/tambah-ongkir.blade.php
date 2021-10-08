@@ -1,8 +1,8 @@
 <div>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="card">
-                <div class="card-header">{{ 'Tambah Ongkir' }}</div>
+            <div class="card border-success mb-3">
+                <div class="card-header text-white bg-success mb-3">{{ 'Tambah Ongkir' }}</div>
                 <div class="card-body">
                     <form wire:submit.prevent="getOngkir">
 
