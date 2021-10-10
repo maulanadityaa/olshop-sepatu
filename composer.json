@@ -14,7 +14,8 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
         "livewire/livewire": "^2.6",
-        "midtrans/midtrans-php": "^2.5"
+        "midtrans/midtrans-php": "^2.5",
+        "realrashid/sweet-alert": "^4.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

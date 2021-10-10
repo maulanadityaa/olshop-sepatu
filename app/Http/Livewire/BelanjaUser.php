@@ -21,6 +21,8 @@ class BelanjaUser extends Component
         $pesanan = Belanja::find($pesanan_id);
         $pesanan->delete();
 
+        toast('Produk telah dihapus!','success');
+
         return redirect()->to('keranjang');
     }
     public function render()

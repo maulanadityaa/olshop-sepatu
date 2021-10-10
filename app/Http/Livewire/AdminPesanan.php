@@ -19,6 +19,8 @@ class AdminPesanan extends Component
         $pesanan = Belanja::find($pesanan_id);
         $pesanan->delete();
 
+        toast('Produk telah dihapus!','success');
+
         return redirect()->route('admin-pesanan');
     }
     public function render()

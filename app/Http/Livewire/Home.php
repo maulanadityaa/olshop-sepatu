@@ -49,6 +49,8 @@ class Home extends Component
             ]
         );
 
+        toast('Produk telah ditambahkan ke keranjang!','success');
+
         return redirect()->to('');
     }
 

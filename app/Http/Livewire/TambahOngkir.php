@@ -53,6 +53,9 @@ class TambahOngkir extends Component
         $this->belanja->status = 1;
         $this->belanja->kurir = $this->jasa;
         $this->belanja->update();
+
+        toast('Sukses menambahkan ongkir!','success');
+
         return redirect()->route('keranjang');
     }
 

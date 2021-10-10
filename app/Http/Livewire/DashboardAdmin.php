@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Livewire\Component;
 use App\Models\Produk;
+use Alert;
 
 class DashboardAdmin extends Component
 {
@@ -21,7 +22,9 @@ class DashboardAdmin extends Component
         $product = Produk::find($id);
         $product->delete();
 
-        return redirect()->to('dashboard');
+        toast('Produk telah dihapus!','success');
+
+        return redirect()->route('dashboard');
         
     }
     public function render()

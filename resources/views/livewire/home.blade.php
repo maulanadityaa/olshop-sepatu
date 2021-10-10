@@ -50,9 +50,9 @@
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 @forelse ($products as $product)
                     <div class="col-sm-4">
-                        <div class="card border-success mb-3">
+                        <div class="card border-0 mb-3">
                             <div class="card-header text-white bg-success mb-3">Sepatu</div>
-                            <div class="card-body text-center">
+                            <div class="card-body text-center shadow p-3 mb-5 bg-white rounded">
                                 <img src="{{ asset('storage/photos/' . $product->gambar) }}" class="img-fluid">
                                 <div class="row-mt-2">
                                     <div class="col-md-12">

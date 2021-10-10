@@ -31,7 +31,7 @@
                                         <img src="{{ asset('storage/photos/' . $product->gambar) }}" width="75px">
                                     </td>
                                     <td>
-                                        <strong>{{ $user->name }}</strong>
+                                        <strong>{{ $user->email}}</strong>
                                     </td>
                                     <td>
                                         <strong>{{ $product->nama }}</strong>

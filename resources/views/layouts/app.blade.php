@@ -12,6 +12,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
 
 
     <!-- Fonts -->
@@ -22,7 +24,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/turbolinks@5.2.0/dist/turbolinks.min.js"></script>
     <!-- Directive: -->
-    @livewireScripts
+    @livewireStyles
+
     <!-- Produces: -->
     <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js"
         data-turbolinks-eval="false" data-turbo-eval="false" defer></script>
@@ -136,15 +139,16 @@
                         @else
                             @if (Auth::user()->level == 1)
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fas fa-user"></i>
-                                        {{ Auth::user()->name }}</a>
+                                    <a class="nav-link" href="{{ route('profile', Auth::user()->id) }}"><i
+                                            class="fas fa-user"></i>
+                                        {{ Auth::user()->email }}</a>
                                 </li>
                             @endif
                             <div>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                document.getElementById('logout-form').submit();"><i
+                                                                                                            document.getElementById('logout-form').submit();"><i
                                             class="fas fa-sign-out-alt"></i>
                                         {{ __('Logout') }}</a>
                                 </li>
@@ -163,11 +167,14 @@
         <main class="py-4">
             @yield('content')
         </main>
+        @include('sweetalert::alert')
+        @livewireScripts
         <script>
             window.addEventListener('closeModal', event => {
                 $("#modalForm").modal('hide');
             })
         </script>
+        @stack('scripts')
     </div>
 </body>
 <footer>
