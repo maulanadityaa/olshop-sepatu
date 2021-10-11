@@ -1,101 +1,90 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card border-warning">
-                    <div class="card-header bg-warning mb-3 text-dark text-center">USER PROFILE</div>
-                    <div class="card-body">
-                            <form wire:submit.prevent="update">
-                                <div class="form-group">
-                                    <div class="form-row mb-2">
-                                        <div class="col">
-                                            <input wire:model="first_name" type="text"
-                                                class="form-control @error('first_name') is-invalid @enderror"
-                                                value="{{ $user->first_name }}">
-                                            @error('first_name')
-                                                <span class="invalid-feedback">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
+            <div class="card border-success">
+                <div class="card-header bg-success mb-3 text-white text-center">USER PROFILE</div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <div class="form-row mb-2">
+                            <div class="col">
+                                <label for="first_name">Nama Depan</label>
+                                <input wire:model="first_name" type="text"
+                                    class="form-control @error('first_name') is-invalid @enderror"
+                                    value="{{ $user->first_name }}" disabled readonly>
+                                @error('first_name')
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
-                                        <div class="col">
-                                            <input wire:model="last_name" type="text"
-                                                class="form-control @error('last_name') is-invalid @enderror"
-                                                value="{{ $user->last_name }}">
-                                            @error('last_name')
-                                                <span class="invalid-feedback">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                            <div class="col">
+                                <label for="last_name">Nama Belakang</label>
+                                <input wire:model="last_name" type="text"
+                                    class="form-control @error('last_name') is-invalid @enderror"
+                                    value="{{ $user->last_name }}" disabled readonly>
+                                @error('last_name')
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-row mb-2">
+                            <div class="col">
+                                <label for="email">Email</label>
+                                <input wire:model="email" type="email"
+                                    class="form-control @error('email') is-invalid @enderror"
+                                    value="{{ $user->email }}" disabled readonly>
+                                @error('email')
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="col">
+                                <label for="phone">No HP</label>
+                                <input wire:model="phone" type="text"
+                                    class="form-control @error('phone') is-invalid @enderror"
+                                    value="{{ $user->phone }}" disabled readonly>
+                                @error('phone')
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        @if ($user->alamat_status == 0)
+                            <button class="nav-link btn btn-info" data-toggle="modal" data-target="#modalFormAlamat"><i
+                                    class="far fa-plus-square"></i>{{ ' Tambah Alamat' }}</button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="modalFormAlamat" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Tambah Alamat
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            @livewire('alamat-user')
                                         </div>
                                     </div>
-
-                                    <div class="form-row mb-2">
-                                        <div class="col">
-                                            <input wire:model="email" type="email"
-                                                class="form-control @error('email') is-invalid @enderror"
-                                                value="{{ $user->email }}">
-                                            @error('email')
-                                                <span class="invalid-feedback">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-
-                                        <div class="col">
-                                            <input wire:model="phone" type="text"
-                                                class="form-control @error('phone') is-invalid @enderror"
-                                                value="{{ $user->phone }}">
-                                            @error('phone')
-                                                <span class="invalid-feedback">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="form-row mb-2">
-                                        <div class="col">
-                                            <label for="">Alamat</label>
-                                            <textarea wire:model="address" id="" cols="30" rows="5"
-                                                class="form-control @error('address') is-invalid @enderror"></textarea>
-                                            @error('address')
-                                                <span class="invalid-feedback">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="form-row mb-2">
-                                        <div class="col">
-                                            <input wire:model="city" type="text"
-                                                class="form-control @error('city') is-invalid @enderror"
-                                                placeholder="Kota/Kabupaten">
-                                            @error('city')
-                                                <span class="invalid-feedback">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-
-                                        <div class="col">
-                                            <input wire:model="postal_code" type="text"
-                                                class="form-control @error('postal_code') is-invalid @enderror"
-                                                placeholder="Kode Pos">
-                                            @error('postal_code')
-                                                <span class="invalid-feedback">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn btn-warning btn-block">Submit</button>
                                 </div>
-                            </form>
+                            </div>
+                        @endif
+                        @if ($user->alamat_status == 1)
+                            <a href="{{ route('cek-alamat', $user->id) }}" class="btn btn-success btn-block">Lihat
+                                Alamat</a>
+                        @endif
                     </div>
-                    <button class="btn btn-primary float-center" id="pay-button">Pilih Metode
-                        Pembayaran</button>
+                </div>
             </div>
             {{-- <pre><div id="result-json">JSON result will appear here after payment:<br></div></pre> --}}
         </div>

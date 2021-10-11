@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Livewire\Component;
 use App\Models\Belanja;
+use App\Models\Produk;
 
 class BelanjaUser extends Component
 {
@@ -19,11 +20,16 @@ class BelanjaUser extends Component
 
     public function destroy($pesanan_id){
         $pesanan = Belanja::find($pesanan_id);
+        
+        $product = Produk::find($pesanan->produk_id);
+        $product->stock += 1;
+        $product->save();
+        
         $pesanan->delete();
 
         toast('Produk telah dihapus!','success');
 
-        return redirect()->to('keranjang');
+        return redirect()->route('keranjang');
     }
     public function render()
     {

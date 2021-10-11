@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Support\Facades\Auth;
+
 use App\Models\User;
 use Livewire\Component;
 
@@ -15,13 +17,13 @@ class UserProfile extends Component
             return redirect()->to('');
         }
 
-        $user = User::find($id);
+        $this->user = User::find($id);
 
-        if($user){
-            $this->first_name = $user->first_name;
-            $this->last_name = $user->last_name;
-            $this->email = $user->email;
-            $this->phone = $user->phone;
+        if($this->user){
+            $this->first_name = $this->user->first_name;
+            $this->last_name = $this->user->last_name;
+            $this->email = $this->user->email;
+            $this->phone = $this->user->phone;
         }
     }
     public function render()

@@ -115,8 +115,8 @@
                                     </li>
                                 @endif
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fas fa-user"></i>
-                                        {{ Auth::user()->name }}</a>
+                                    <a class="nav-link" href="{{ route('profile', Auth::user()->id) }}"><i class="fas fa-user"></i>
+                                        {{ Auth::user()->email }}</a>
                                 </li>
                             @endif
 
