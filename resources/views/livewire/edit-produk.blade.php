@@ -51,7 +51,7 @@
                             <br><br>
     
                             <div class="col-md-6 align-self-center mx-auto">
-                                <button type="submit" class="btn btn-success btn-block">Edit Produk</button>
+                                <button type="submit" class="btn btn-success btn-block"><i class="far fa-paper-plane"></i> Submit</button>
                             </div>
                         </form>
                     </div>

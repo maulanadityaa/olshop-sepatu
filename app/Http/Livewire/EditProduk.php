@@ -73,6 +73,8 @@ class EditProduk extends Component
                 ]);
             }
         }
+
+        toast('Produk telah diedit!','success');
         return redirect()->route('dashboard');
         // return dd($this->productId);
     }

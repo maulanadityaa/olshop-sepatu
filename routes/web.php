@@ -29,3 +29,4 @@ Route::get('/tambah-ongkir/{id}', \App\Http\Livewire\TambahOngkir::class)->name(
 Route::get('/keranjang/checkout/{id}', \App\Http\Livewire\Checkout::class)->name('checkout');
 Route::get('/akun/profile/{id}', \App\Http\Livewire\UserProfile::class)->name('profile');
 Route::get('/akun/profile/alamat/{id}', \App\Http\Livewire\CekAlamat::class)->name('cek-alamat');
+//Route::get('/akun/profile/alamat/{id}/edit', \App\Http\Livewire\EditAlamat::class)->name('edit-alamat');

@@ -20,11 +20,26 @@ class CekAlamat extends Component
         $this->alamat = Alamat::where('user_id',$id)->first();
         // dd($this->alamat);
         if ($this->alamat) {
+            $this->alamat_id = $this->alamat->id;;
             $this->address = $this->alamat->address;
             $this->city = $this->alamat->kota;
             $this->postal_code = $this->alamat->kode_pos;
         }
+        // dd($this->alamat_id);
     }
+
+    // public function update($alamat_id){
+    //     $this->validate(
+    //         [
+    //             'address' => 'required|min:20',
+    //             'city' => 'required',
+    //             'postal_code' => 'required|numeric|min:5'
+    //         ]
+    //     );
+
+    //     $alamat = Alamat::findOrFail($alamat_id);
+    //}
+
     public function render()
     {
         
