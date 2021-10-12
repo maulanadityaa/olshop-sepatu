@@ -49,7 +49,7 @@ class Home extends Component
             ]
         );
 
-        toast('Produk telah ditambahkan ke keranjang!','success');
+        toast('Produk telah ditambahkan ke keranjang!','success')->timerProgressBar();
 
         return redirect()->to('');
     }

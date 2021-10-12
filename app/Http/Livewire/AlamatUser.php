@@ -39,7 +39,7 @@ class AlamatUser extends Component
 
         $this->dispatchBrowserEvent('closeModal');
 
-        toast('Alamat telah ditambahkan!','success');
+        toast('Alamat telah ditambahkan!','success')->timerProgressBar();
 
         return redirect()->route('cek-alamat', Auth::user()->id);
     }

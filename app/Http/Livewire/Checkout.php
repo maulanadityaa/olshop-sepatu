@@ -2,8 +2,12 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Support\Facades\Auth;
+
+use App\Models\Alamat;
 use Livewire\Component;
 use App\Models\Belanja;
+use App\Models\User;
 
 use function GuzzleHttp\json_decode;
 
@@ -21,6 +25,7 @@ class Checkout extends Component
     public $pesanan_id, $nama, $total_harga, $berat, $gambar, $stock;
     public $pesanan;
     public $va_number, $gross_amount, $bank, $transaction_status, $deadline;
+    public $user, $alamat;
 
     // protected $listeners = [
     //     'emptyCart' => 'emptyCartHandler'
@@ -38,8 +43,18 @@ class Checkout extends Component
         else{
             $this->formCheckout = true;
     
+            $this->alamat = Alamat::where('user_id', Auth::user()->id)->first();
+            $this->user = User::findorFail(Auth::user()->id);
             $this->pesanan = Belanja::findorFail($id);
-            if ($this->pesanan) {
+            // dd($this->user);
+            if ($this->pesanan && $this->alamat && $this->user) {
+                $this->first_name = $this->user->first_name;
+                $this->last_name = $this->user->last_name;
+                $this->email = $this->user->email;
+                $this->phone = $this->user->phone;
+                $this->address = $this->alamat->address;
+                $this->city = $this->alamat->kota;
+                $this->postal_code = $this->alamat->kode_pos;
                 $this->pesanan_id = $this->pesanan->id;
                 $this->nama = $this->pesanan->nama;
                 $this->total_harga = $this->pesanan->total_harga;
@@ -47,27 +62,14 @@ class Checkout extends Component
                 $this->gambar = $this->pesanan->gambar;
                 $this->stock = $this->pesanan->stock;
             }
+
+            alert()->info('Checkout','Untuk mengganti alamat pengiriman silahkan mengubah alamat pada halaman profil')->width('720px');
             // dd($pesanan);
         }
     }
 
     public function checkout()
     {
-        $this->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required',
-            'address' => 'required',
-            'city' => 'required',
-            'postal_code' => 'required'
-        ]);
-
-        // $cart = Cart::get()['products'];
-        // $amount = array_sum(
-        //     array_column($cart, 'price')
-        // );
-
         if (!empty($this->pesanan)) {
             if ($this->pesanan->status == 1) {
                 $customerDetails = [

@@ -13,7 +13,7 @@
                                         <div class="col">
                                             <input wire:model="first_name" type="text"
                                                 class="form-control @error('first_name') is-invalid @enderror"
-                                                placeholder="Nama Depan">
+                                                placeholder="Nama Depan" value="{{ $user->first_name }}" disabled readonly>
                                             @error('first_name')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>
@@ -24,7 +24,7 @@
                                         <div class="col">
                                             <input wire:model="last_name" type="text"
                                                 class="form-control @error('last_name') is-invalid @enderror"
-                                                placeholder="Nama Belakang">
+                                                placeholder="Nama Belakang"  value="{{ $user->last_name }}" disabled readonly>
                                             @error('last_name')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>
@@ -37,7 +37,7 @@
                                         <div class="col">
                                             <input wire:model="email" type="email"
                                                 class="form-control @error('email') is-invalid @enderror"
-                                                placeholder="Email">
+                                                placeholder="Email"  value="{{ $user->email }}" disabled readonly>
                                             @error('email')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>
@@ -48,7 +48,7 @@
                                         <div class="col">
                                             <input wire:model="phone" type="text"
                                                 class="form-control @error('phone') is-invalid @enderror"
-                                                placeholder="No. HP">
+                                                placeholder="No. HP"  value="{{ $user->phone }}" disabled readonly>
                                             @error('phone')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>
@@ -61,7 +61,7 @@
                                         <div class="col">
                                             <label for="">Alamat</label>
                                             <textarea wire:model="address" id="" cols="30" rows="5"
-                                                class="form-control @error('address') is-invalid @enderror"></textarea>
+                                                class="form-control @error('address') is-invalid @enderror" value="{{ $alamat->address }}" disabled readonly></textarea>
                                             @error('address')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>
@@ -74,7 +74,7 @@
                                         <div class="col">
                                             <input wire:model="city" type="text"
                                                 class="form-control @error('city') is-invalid @enderror"
-                                                placeholder="Kota/Kabupaten">
+                                                placeholder="Kota/Kabupaten"  value="{{ $alamat->kota }}" disabled readonly>
                                             @error('city')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>
@@ -85,7 +85,7 @@
                                         <div class="col">
                                             <input wire:model="postal_code" type="text"
                                                 class="form-control @error('postal_code') is-invalid @enderror"
-                                                placeholder="Kode Pos">
+                                                placeholder="Kode Pos"  value="{{ $alamat->kode_pos }}" disabled readonly>
                                             @error('postal_code')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>
@@ -98,8 +98,10 @@
                             </form>
                     </div>
                 @else
-                    <button class="btn btn-primary float-center" id="pay-button">Pilih Metode
+                <div class="container text-center">
+                    <button class="btn btn-primary" id="pay-button">Pilih Metode
                         Pembayaran</button>
+                </div>
                 @endif
             @elseif ($pesanan->status == 2)
                 <div class="card-header bg-warning mb-3 text-dark text-center">STATUS PESANAN</div>

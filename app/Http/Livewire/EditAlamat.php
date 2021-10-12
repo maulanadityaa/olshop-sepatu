@@ -55,7 +55,7 @@ class EditAlamat extends Component
                 ]);
             }
         }
-        toast('Alamat telah ditedit!','success');
+        toast('Alamat telah ditedit!','success')->timerProgressBar();
         return redirect()->route('cek-alamat', $this->user_id);
     }
 

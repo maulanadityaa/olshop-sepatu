@@ -74,7 +74,7 @@ class EditProduk extends Component
             }
         }
 
-        toast('Produk telah diedit!','success');
+        toast('Produk telah diedit!','success')->timerProgressBar();
         return redirect()->route('dashboard');
         // return dd($this->productId);
     }

@@ -48,7 +48,7 @@ class TambahProduk extends Component
         $this->dispatchBrowserEvent('closeModal');
         $this->cleanVars();
 
-        toast('Produk telah ditambahkan!','success');
+        toast('Produk telah ditambahkan!','success')->timerProgressBar();
 
         return redirect()->route('dashboard');
     }

@@ -71,8 +71,7 @@
                                         @endif
                                         @if ($pesanan->status == 1)
                                             <a href="{{ route('checkout', $pesanan->id) }}"
-                                                class="btn btn-primary btn-block"><i class="fas fa-file-invoice"></i> Pilih
-                                                Pembayaran</a>
+                                                class="btn btn-primary btn-block"><i class="fas fa-file-invoice"></i> Checkout</a>
                                         @endif
                                         @if ($pesanan->status == 2)
                                             <a href="{{ url('bayar/' . $pesanan->id) }}"

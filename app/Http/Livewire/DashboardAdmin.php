@@ -22,7 +22,7 @@ class DashboardAdmin extends Component
         $product = Produk::find($id);
         $product->delete();
 
-        toast('Produk telah dihapus!','success');
+        toast('Produk telah dihapus!','success')->timerProgressBar();
 
         return redirect()->route('dashboard');
         
