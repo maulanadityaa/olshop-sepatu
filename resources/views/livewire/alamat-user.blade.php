@@ -2,7 +2,7 @@
     <div class="container-xl">
         <div class="row justify-content-center">
             <div class="card border-success" style="width: 18rem;">
-                <div class="card-header bg-success mb-3 text-white text-center">{{ 'Tambah Alamat' }}</div>
+                <div class="card-header bg-success mb-3 text-white text-center">{{ 'TAMBAH ALAMAT' }}</div>
                 <div class="card-body">
                     <form wire:submit.prevent="store">
                         <label for="address" class="col-md-12 col-form-label text-md-left">{{ 'Alamat' }}</label>

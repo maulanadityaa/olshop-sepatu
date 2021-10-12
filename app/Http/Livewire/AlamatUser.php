@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\Alamat;
+use App\Models\User;
 use Livewire\Component;
 
 class AlamatUser extends Component
@@ -30,6 +31,10 @@ class AlamatUser extends Component
             'address' => $this->address,
             'kota' => $this->city,
             'kode_pos' => $this->postal_code
+        ]);
+
+        User::where('id', Auth::user()->id)->update([
+            'alamat_status' => 1
         ]);
 
         $this->dispatchBrowserEvent('closeModal');

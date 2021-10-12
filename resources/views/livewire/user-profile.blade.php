@@ -57,7 +57,7 @@
                             </div>
                         </div>
                         @if ($user->alamat_status == 0)
-                            <button class="nav-link btn btn-info" data-toggle="modal" data-target="#modalFormAlamat"><i
+                            <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#modalFormAlamat"><i
                                     class="far fa-plus-square"></i>{{ ' Tambah Alamat' }}</button>
                             <!-- Modal -->
                             <div class="modal fade" id="modalFormAlamat" tabindex="-1" aria-labelledby="exampleModalLabel"
