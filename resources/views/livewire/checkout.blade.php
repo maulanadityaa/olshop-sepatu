@@ -104,12 +104,42 @@
                 </div>
                 @endif
             @elseif ($pesanan->status == 2)
-                <div class="card-header bg-warning mb-3 text-dark text-center">STATUS PESANAN</div>
-
-                <div class="card-body">
-
+                <div class="card">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col">
+                                <table class="table" style="border-top : hidden">
+                                    <tr>
+                                        <td>Virtual Akun</td>
+                                        <td>:</td>
+                                        <td>{{ $va_number }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bank</td>
+                                        <td>:</td>
+                                        <td>{{ $bank }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total Harga</td>
+                                        <td>:</td>
+                                        <td>{{ $gross_amount }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Status</td>
+                                        <td>:</td>
+                                        <td>{{ $transaction_status }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Batas Waktu Pembayaran</td>
+                                        <td>:</td>
+                                        <td>{{ $deadline }}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                @endif
+            @endif
                 <form id="payment-form" method="get" action="payment">
                     {{-- <input type="hidden" name="result_type" id="result-type" value=""></div> --}}
                     <input type="hidden" name="result_data" id="result-data" value=""></div>

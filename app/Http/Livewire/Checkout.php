@@ -36,9 +36,23 @@ class Checkout extends Component
         if(isset($_GET['result_data'])){
             $current_status = json_decode($_GET['result_data'], true);
             $order_id = $current_status['order_id'];
-            $this->pesanan =  Belanja::findorFail($id);
+            $this->pesanan =  Belanja::where('id', $order_id)->first();
             $this->pesanan->status = 2;
             $this->pesanan->update();
+
+            if ($this->pesanan->status == 2) {
+                \Midtrans\Config::$serverKey = config('services.midtrans.serverKey');
+                $status = \Midtrans\Transaction::status($this->pesanan->id);
+                $status = json_decode(json_encode($status), true);
+                //dd($status);
+
+                $this->va_number = $status['va_numbers'][0]['va_number'];
+                $this->gross_amount = $status['gross_amount'];
+                $this->bank = $status['va_numbers'][0]['bank'];
+                $this->transaction_status = $status['transaction_status'];
+                $transaction_time = $status['transaction_time'];
+                $this->deadline = date('Y-m-d H:i:s', strtotime('+1 day', strtotime($transaction_time)));
+            }
         }
         else{
             $this->formCheckout = true;
@@ -109,17 +123,6 @@ class Checkout extends Component
                 $snapToken = \Midtrans\Snap::getSnapToken($payload);
 
                 $this->snapToken = $snapToken;
-            } elseif ($this->pesanan->status == 2) {
-                $status = \Midtrans\Transaction::status($this->pesanan->id);
-                $status = json_decode(json_encode($status), true);
-                dd($status);
-
-                $this->va_number = $status['va_numbers'][0]['va_number'];
-                $this->gross_amount = $status['gross_amount'];
-                $this->bank = $status['va_numbers'][0]['bank'];
-                $this->transaction_status = $status['transaction_status'];
-                $transaction_time = $status['transaction_time'];
-                $this->deadline = date('Y-m-d H:i:s', strtotime('+1 day', strtotime($transaction_time)));
             }
         }
     }
