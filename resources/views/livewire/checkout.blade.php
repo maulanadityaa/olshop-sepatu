@@ -104,35 +104,39 @@
                 </div>
                 @endif
             @elseif ($pesanan->status == 2)
+            <div class="card-header bg-warning mb-3 text-dark text-center">STATUS</div>
                 <div class="card">
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col">
                                 <table class="table" style="border-top : hidden">
+                                    @php
+                                        $checkout = \App\Models\Checkout::where('belanja_id', $pesanan->id)->first();
+                                    @endphp
                                     <tr>
                                         <td>Virtual Akun</td>
                                         <td>:</td>
-                                        <td>{{ $va_number }}</td>
+                                        <td>{{ $checkout->va_number }}</td>
                                     </tr>
                                     <tr>
                                         <td>Bank</td>
                                         <td>:</td>
-                                        <td>{{ $bank }}</td>
+                                        <td>{{ $checkout->bank }}</td>
                                     </tr>
                                     <tr>
                                         <td>Total Harga</td>
                                         <td>:</td>
-                                        <td>{{ $gross_amount }}</td>
+                                        <td>Rp. {{ number_format($checkout->total_harga) }}</td>
                                     </tr>
                                     <tr>
                                         <td>Status</td>
                                         <td>:</td>
-                                        <td>{{ $transaction_status }}</td>
+                                        <td>{{ $checkout->status }}</td>
                                     </tr>
                                     <tr>
                                         <td>Batas Waktu Pembayaran</td>
                                         <td>:</td>
-                                        <td>{{ $deadline }}</td>
+                                        <td>{{ $checkout->deadline }}</td>
                                     </tr>
                                 </table>
                             </div>

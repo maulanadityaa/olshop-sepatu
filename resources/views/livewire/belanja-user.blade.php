@@ -74,7 +74,7 @@
                                                 class="btn btn-primary btn-block"><i class="fas fa-file-invoice"></i> Checkout</a>
                                         @endif
                                         @if ($pesanan->status == 2)
-                                            <a href="{{ url('bayar/' . $pesanan->id) }}"
+                                            <a href="{{ route('checkout', $pesanan->id) }}"
                                                 class="btn btn-success btn-block">Lihat Status</a>
                                         @endif
                                     </td>

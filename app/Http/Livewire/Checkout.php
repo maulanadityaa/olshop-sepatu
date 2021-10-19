@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Alamat;
 use Livewire\Component;
 use App\Models\Belanja;
+use App\Models\Checkout as AppCheckout;
 use App\Models\User;
 
 use function GuzzleHttp\json_decode;
@@ -48,10 +49,19 @@ class Checkout extends Component
 
                 $this->va_number = $status['va_numbers'][0]['va_number'];
                 $this->gross_amount = $status['gross_amount'];
-                $this->bank = $status['va_numbers'][0]['bank'];
-                $this->transaction_status = $status['transaction_status'];
+                $this->bank = strtoupper($status['va_numbers'][0]['bank']);
+                $this->transaction_status = strtoupper($status['transaction_status']);
                 $transaction_time = $status['transaction_time'];
                 $this->deadline = date('Y-m-d H:i:s', strtotime('+1 day', strtotime($transaction_time)));
+
+                AppCheckout::create([
+                    'belanja_id' => $order_id,
+                    'va_number' => $this->va_number,
+                    'bank' => $this->bank,
+                    'total_harga' => $this->gross_amount,
+                    'status' => $this->transaction_status,
+                    'deadline' => $this->deadline
+                ]);
             }
         }
         else{
@@ -60,6 +70,7 @@ class Checkout extends Component
             $this->alamat = Alamat::where('user_id', Auth::user()->id)->first();
             $this->user = User::findorFail(Auth::user()->id);
             $this->pesanan = Belanja::findorFail($id);
+            alert()->info('Checkout','Untuk mengganti alamat pengiriman silahkan mengubah alamat pada halaman profil')->width('720px');
             // dd($this->user);
             if ($this->pesanan && $this->alamat && $this->user) {
                 $this->first_name = $this->user->first_name;
@@ -77,7 +88,6 @@ class Checkout extends Component
                 $this->stock = $this->pesanan->stock;
             }
 
-            alert()->info('Checkout','Untuk mengganti alamat pengiriman silahkan mengubah alamat pada halaman profil')->width('720px');
             // dd($pesanan);
         }
     }
