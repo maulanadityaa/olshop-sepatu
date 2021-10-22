@@ -75,7 +75,7 @@
                                         @endif
                                         @if ($pesanan->status == 2)
                                             <a href="{{ route('status', $pesanan->id) }}"
-                                                class="btn btn-success btn-block">Lihat Status</a>
+                                                class="btn btn-success btn-block"><i class="fas fa-info-circle"></i> Lihat Status</a>
                                         @endif
                                     </td>
                                     <td>
