@@ -48,11 +48,16 @@ class StatusPesanan extends Component
                 $belanja->update([
                     'status' => 3
                 ]);
-                $this->resi = $checkout->resi;
-                $this->kurir = $checkout->kurir;
             }
         }
-        //dd($checkout);
+
+        if ($checkout) {
+            $checkout->update([
+                'kurir' => $belanja->kurir
+            ]);
+            $this->resi = $checkout->resi;
+            $this->kurir = $checkout->kurir;
+        }
     }
 
     public function render()

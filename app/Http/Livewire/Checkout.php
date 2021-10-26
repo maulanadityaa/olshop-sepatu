@@ -60,7 +60,8 @@ class Checkout extends Component
                     'bank' => $this->bank,
                     'total_harga' => $this->gross_amount,
                     'status' => $this->transaction_status,
-                    'deadline' => $this->deadline
+                    'deadline' => $this->deadline,
+                    'kurir' => $this->pesanan->kurir
                 ]);
             }
         }

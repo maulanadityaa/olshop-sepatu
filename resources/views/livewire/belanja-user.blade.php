@@ -46,11 +46,13 @@
                                             $checkout = \App\Models\Checkout::where('belanja_id', $pesanan->id)->first();
                                             //dd($checkout);
                                         @endphp
-                                        @if ($checkout->status == 'SETTLEMENT' && $pesanan->status == 3)
-                                            <strong>Sudah Dibayar</strong>
-                                        @endif
-                                        @if ($checkout->status == 'EXPIRE' && $pesanan->status == 3)
-                                            <strong>Batas Waktu Pembayaran Telah Selesai</strong>
+                                        @if ($checkout != null)
+                                            @if ($checkout->status == 'SETTLEMENT' && $pesanan->status == 3)
+                                                <strong>Sudah Dibayar</strong>
+                                            @endif
+                                            @if ($checkout->status == 'EXPIRE' && $pesanan->status == 3)
+                                                <strong>Batas Waktu Pembayaran Telah Selesai</strong>
+                                            @endif
                                         @endif
                                     </td>
                                     <td><strong>Rp. {{ number_format($pesanan->total_harga) }}</strong></td>
@@ -87,13 +89,16 @@
                                                 class="btn btn-primary btn-block"><i class="fas fa-file-invoice"></i>
                                                 Checkout</a>
                                         @endif
-                                        @if ($pesanan->status == 2 || $checkout->status == 'SETTLEMENT')
-                                            <a href="{{ route('status', $pesanan->id) }}"
-                                                class="btn btn-success btn-block"><i class="fas fa-info-circle"></i>
-                                                Lihat Status</a>
-                                        @endif
-                                        @if ($checkout->status == 'EXPIRE' && $pesanan->status == 3)
-                                            <button type="button" class="btn btn-danger" disabled><i class="fas fa-ban"></i> Pesanan Batal</button>
+                                        @if ($checkout != null)
+                                            @if ($pesanan->status == 2 || $checkout->status == 'SETTLEMENT')
+                                                <a href="{{ route('status', $pesanan->id) }}"
+                                                    class="btn btn-success btn-block"><i class="fas fa-info-circle"></i>
+                                                    Lihat Status</a>
+                                            @endif
+                                            @if ($checkout->status == 'EXPIRE' && $pesanan->status == 3)
+                                                <button type="button" class="btn btn-danger" disabled><i
+                                                        class="fas fa-ban"></i> Pesanan Batal</button>
+                                            @endif
                                         @endif
                                     </td>
                                     <td>
