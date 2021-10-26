@@ -32,7 +32,7 @@
                                         <img src="{{ asset('storage/photos/' . $product->gambar) }}" width="75px">
                                     </td>
                                     <td>
-                                        <strong>{{ $user->email}}</strong>
+                                        <strong>{{ $user->email }}</strong>
                                     </td>
                                     <td>
                                         <strong>{{ $product->nama }}</strong>
@@ -45,25 +45,46 @@
                                     </td>
                                     <td>
                                         @if ($pesan->status == 'PENDING')
-                                                <div class="badge bg-warning text-wrap">
-                                                    {{ $pesan->status }}
-                                                </div>
-                                            
+                                            <div class="badge bg-warning text-wrap">
+                                                {{ $pesan->status }}
+                                            </div>
+
                                         @elseif ($pesan->status == 'SETTLEMENT')
-                                                    <div class="badge bg-success text-white">
-                                                        {{ $pesan->status }}
-                                                    </div>
+                                            <div class="badge bg-success text-white">
+                                                {{ $pesan->status }}
+                                            </div>
                                         @elseif ($pesan->status == 'EXPIRE')
-                                                    <div class="badge bg-danger text-white">
-                                                        {{ $pesan->status }}
-                                                    </div>
-                                                
+                                            <div class="badge bg-danger text-white">
+                                                {{ $pesan->status }}
+                                            </div>
+
                                         @endif
                                     </td>
                                     <td>
                                         <div class="container">
-                                            <a href="#"
-                                                class="btn btn-primary btn-block">EDIT</a>
+                                            <a class="btn btn-primary btn-block" data-toggle="modal"
+                                                data-target="#modalFormEditPesanan-{{ $pesan->id }}"><i
+                                                    class="far fa-edit"></i>{{ ' Edit Pesanan' }}</a>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="modalFormEditPesanan-{{ $pesan->id }}"
+                                                tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content text-center">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Edit
+                                                                Pesanan
+                                                            </h5>
+                                                            <button type="button" class="close"
+                                                                data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            @livewire('edit-pesanan-admin', ['id' => $pesan->id])
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <a class="btn btn-danger btn-block"
                                                 wire:click="destroy({{ $pesan->id }})"><i
                                                     class="far fa-trash-alt"></i></a>
