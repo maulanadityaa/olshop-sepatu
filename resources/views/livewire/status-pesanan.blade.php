@@ -41,6 +41,12 @@
                                                         {{ $status }}
                                                     </div>
                                                 </td>
+                                        @elseif ($status == 'EXPIRE')
+                                                <td>
+                                                    <div class="badge bg-danger text-white">
+                                                        {{ $status }}
+                                                    </div>
+                                                </td>
                                         @endif
                                     </tr>
                                     <tr>

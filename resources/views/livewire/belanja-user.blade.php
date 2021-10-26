@@ -42,12 +42,24 @@
                                         @if ($pesanan->status == 2)
                                             <strong>Sudah Memilih Pembayaran</strong>
                                         @endif
+                                        @php
+                                            $checkout = \App\Models\Checkout::where('belanja_id', $pesanan->id)->first();
+                                            //dd($checkout);
+                                        @endphp
+                                        @if ($checkout->status == 'SETTLEMENT' && $pesanan->status == 3)
+                                            <strong>Sudah Dibayar</strong>
+                                        @endif
+                                        @if ($checkout->status == 'EXPIRE' && $pesanan->status == 3)
+                                            <strong>Batas Waktu Pembayaran Telah Selesai</strong>
+                                        @endif
                                     </td>
                                     <td><strong>Rp. {{ number_format($pesanan->total_harga) }}</strong></td>
                                     <td><strong>{{ $pesanan->kurir }}</strong></td>
                                     <td>
                                         @if ($pesanan->status == 0)
-                                            <a href="{{ route('tambah-ongkir', $pesanan->id) }}" class="btn btn-warning btn-block" data-toggle="modal" data-target="#modalFormOngkir"><i class="fas fa-shipping-fast"></i>
+                                            <a href="{{ route('tambah-ongkir', $pesanan->id) }}"
+                                                class="btn btn-warning btn-block" data-toggle="modal"
+                                                data-target="#modalFormOngkir"><i class="fas fa-shipping-fast"></i>
                                                 Tambah Ongkir</a>
                                             <!-- Modal -->
                                             <div class="modal fade" id="modalFormOngkir" tabindex="-1"
@@ -55,7 +67,8 @@
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel"><strong>Pilih Jasa Pengiriman Barang</strong>
+                                                            <h5 class="modal-title" id="exampleModalLabel">
+                                                                <strong>Pilih Jasa Pengiriman Barang</strong>
                                                             </h5>
                                                             <button type="button" class="close"
                                                                 data-dismiss="modal" aria-label="Close">
@@ -71,11 +84,16 @@
                                         @endif
                                         @if ($pesanan->status == 1)
                                             <a href="{{ route('checkout', $pesanan->id) }}"
-                                                class="btn btn-primary btn-block"><i class="fas fa-file-invoice"></i> Checkout</a>
+                                                class="btn btn-primary btn-block"><i class="fas fa-file-invoice"></i>
+                                                Checkout</a>
                                         @endif
-                                        @if ($pesanan->status == 2)
+                                        @if ($pesanan->status == 2 || $checkout->status == 'SETTLEMENT')
                                             <a href="{{ route('status', $pesanan->id) }}"
-                                                class="btn btn-success btn-block"><i class="fas fa-info-circle"></i> Lihat Status</a>
+                                                class="btn btn-success btn-block"><i class="fas fa-info-circle"></i>
+                                                Lihat Status</a>
+                                        @endif
+                                        @if ($checkout->status == 'EXPIRE' && $pesanan->status == 3)
+                                            <button type="button" class="btn btn-danger" disabled><i class="fas fa-ban"></i> Pesanan Batal</button>
                                         @endif
                                     </td>
                                     <td>

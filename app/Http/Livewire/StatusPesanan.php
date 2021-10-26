@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Belanja;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Checkout;
@@ -32,6 +33,7 @@ class StatusPesanan extends Component
         $this->deadline = date('Y-m-d H:i:s', strtotime('+1 day', strtotime($transaction_time)));
         
         $checkout = Checkout::where('belanja_id', $id)->first();
+        $belanja = Belanja::where('id', $id)->first();
 
         if(strtolower($this->status) != 'pending'){
             $this->statusNew = $this->status;
@@ -39,6 +41,9 @@ class StatusPesanan extends Component
             if($checkout){
                 $checkout->update([
                     'status' => $this->statusNew
+                ]);
+                $belanja->update([
+                    'status' => 3
                 ]);
             }
         }
