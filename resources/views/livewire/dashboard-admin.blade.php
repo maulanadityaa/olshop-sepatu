@@ -2,24 +2,35 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col">
-                <button class="nav-link btn btn-info" data-toggle="modal" data-target="#modalForm"><i
-                        class="far fa-plus-square"></i>{{ ' Tambah Produk' }}</button>
-                <!-- Modal -->
-                <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Tambah Produk
-                                </h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                @livewire('tambah-produk')
+                <div class="row">
+                    <div class="col">
+                        <button class="nav-link btn btn-info" data-toggle="modal" data-target="#modalForm"><i
+                                class="far fa-plus-square"></i>{{ ' Tambah Produk' }}</button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Tambah Produk
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        @livewire('tambah-produk')
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="col">
+                        @php
+                            $jumlah = \App\Models\Produk::all()->count();
+                        @endphp
+                        <div class="btn btn-light btn-lg disabled float-right" aria-disabled="true">Total Produk : {{ $jumlah }}</div>
                     </div>
                 </div>
                 <br>

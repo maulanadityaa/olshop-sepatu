@@ -41,7 +41,6 @@ class EditProduk extends Component
             'harga' => 'required',
             'berat' => 'required',
             'stock' => 'required|numeric|min:3',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
     }
 
@@ -53,25 +52,38 @@ class EditProduk extends Component
                 'harga' => 'required',
                 'berat' => 'required',
                 'stock' => 'required|numeric|min:3',
-                'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             ]
         );
         if($this->product_id) {
 
             $product = Produk::findOrFail($this->product_id);
-            
-            $nama_gambar = md5($this->gambar.microtime()).'.'.$this->gambar->extension();
-            Storage::disk('public')->putFileAs('photos', $this->gambar, $nama_gambar);
 
-            if($product) {
-                $product->update([
-                    'nama' => $this->nama,
-                    'gambar' => $nama_gambar,
-                    'berat' => $this->berat,
-                    'harga' => $this->harga,
-                    'stock' => $this->stock,
-                ]);
+            //dd($this->gambar);
+            
+            if ($this->gambar) {
+                $nama_gambar = md5($this->gambar.microtime()).'.'.$this->gambar->extension();
+                Storage::disk('public')->putFileAs('photos', $this->gambar, $nama_gambar);
+                if($product) {
+                    $product->update([
+                        'nama' => $this->nama,
+                        'gambar' => $nama_gambar,
+                        'berat' => $this->berat,
+                        'harga' => $this->harga,
+                        'stock' => $this->stock,
+                    ]);
+                }
+            } else {
+                if($product) {
+                    $product->update([
+                        'nama' => $this->nama,
+                        'berat' => $this->berat,
+                        'harga' => $this->harga,
+                        'stock' => $this->stock,
+                    ]);
+                }
+
             }
+
         }
 
         toast('Produk telah diedit!','success')->timerProgressBar();
