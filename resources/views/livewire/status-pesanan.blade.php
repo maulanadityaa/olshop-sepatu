@@ -54,6 +54,16 @@
                                         <td>:</td>
                                         <td>{{ $deadline }}</td>
                                     </tr>
+                                    <tr>
+                                        <td>Jasa Pengiriman</td>
+                                        <td>:</td>
+                                        <td>{{ $kurir }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nomor Resi</td>
+                                        <td>:</td>
+                                        <td>{{ $resi }}</td>
+                                    </tr>
                                 </table>
                             </div>
                         </div>

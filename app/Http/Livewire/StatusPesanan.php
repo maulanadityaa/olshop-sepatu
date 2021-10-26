@@ -11,7 +11,7 @@ use Livewire\Component;
 class StatusPesanan extends Component
 {
     public $checkout;
-    public $va_number, $gross_amount, $bank, $status, $deadline;
+    public $va_number, $gross_amount, $bank, $status, $deadline, $resi, $kurir;
     public $statusNew;
 
     public function mount($id)
@@ -35,16 +35,21 @@ class StatusPesanan extends Component
         $checkout = Checkout::where('belanja_id', $id)->first();
         $belanja = Belanja::where('id', $id)->first();
 
+        //dd($belanja->kurir);
+
         if(strtolower($this->status) != 'pending'){
             $this->statusNew = $this->status;
 
             if($checkout){
                 $checkout->update([
-                    'status' => $this->statusNew
+                    'status' => $this->statusNew,
+                    'kurir' => $belanja->kurir
                 ]);
                 $belanja->update([
                     'status' => 3
                 ]);
+                $this->resi = $checkout->resi;
+                $this->kurir = $checkout->kurir;
             }
         }
         //dd($checkout);

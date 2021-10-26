@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Livewire\Component;
 use App\Models\Belanja;
+use App\Models\Checkout;
 
 class AdminPesanan extends Component
 {
@@ -25,7 +26,7 @@ class AdminPesanan extends Component
     }
     public function render()
     {
-        $this->pesanan = Belanja::all();
+        $this->pesanan = Checkout::all();
         return view('livewire.admin-pesanan')->extends('layouts.app')->section('content');
     }
 }

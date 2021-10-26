@@ -22,11 +22,12 @@
                             @forelse ($pesanan as $pesan)
                                 <tr>
                                     @php
-                                        $user = \App\Models\User::where('id', $pesan->user_id)->first();
-                                        $product = \App\Models\Produk::where('id', $pesan->produk_id)->first();
+                                        $belanja = \App\Models\Belanja::where('id', $pesan->belanja_id)->first();
+                                        $user = \App\Models\User::where('id', $belanja->user_id)->first();
+                                        $product = \App\Models\Produk::where('id', $belanja->produk_id)->first();
                                     @endphp
                                     <td>{{ $no++ }}</td>
-                                    <td>{{ $pesan->created_at }}</td>
+                                    <td>{{ $pesan->updated_at }}</td>
                                     <td>
                                         <img src="{{ asset('storage/photos/' . $product->gambar) }}" width="75px">
                                     </td>
@@ -43,14 +44,20 @@
                                         <strong>{{ $pesan->kurir }}</strong>
                                     </td>
                                     <td>
-                                        @if ($pesan->status == 0)
-                                            <strong>Belum ditambahkan Ongkir</strong>
-                                        @endif
-                                        @if ($pesan->status == 1)
-                                            <strong>Sudah ditambahkan Ongkir</strong>
-                                        @endif
-                                        @if ($pesan->status == 2)
-                                            <strong>Sudah Memilih Pembayaran</strong>
+                                        @if ($pesan->status == 'PENDING')
+                                                <div class="badge bg-warning text-wrap">
+                                                    {{ $pesan->status }}
+                                                </div>
+                                            
+                                        @elseif ($pesan->status == 'SETTLEMENT')
+                                                    <div class="badge bg-success text-white">
+                                                        {{ $pesan->status }}
+                                                    </div>
+                                        @elseif ($pesan->status == 'EXPIRE')
+                                                    <div class="badge bg-danger text-white">
+                                                        {{ $pesan->status }}
+                                                    </div>
+                                                
                                         @endif
                                     </td>
                                     <td>
