@@ -52,7 +52,7 @@
                     <div class="col-sm-4">
                         <div class="card border-0 mb-3">
                             <div class="card-header text-white bg-success mb-3">Sepatu</div>
-                            <div class="card-body text-center shadow p-3 mb-5 bg-white rounded">
+                            <div class="card-body text-center shadow p-3 mb-5 bg-body rounded-5">
                                 <img src="{{ asset('storage/photos/' . $product->gambar) }}" class="img-fluid">
                                 <div class="row-mt-2">
                                     <div class="col-md-12">
