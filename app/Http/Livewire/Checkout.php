@@ -87,6 +87,9 @@ class Checkout extends Component
                 $this->berat = $this->pesanan->berat;
                 $this->gambar = $this->pesanan->gambar;
                 $this->stock = $this->pesanan->stock;
+            } else{
+                alert()->info('Checkout','Tambahkan Alamat Terlebih Dahulu!')->width('720px');
+                return redirect()->route('profile', Auth::user()->id);
             }
 
             // dd($pesanan);
