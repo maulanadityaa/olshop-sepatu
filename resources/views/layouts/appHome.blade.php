@@ -36,7 +36,6 @@
         <main class="py-4">
             @yield('content')
         </main>
-        @include('layouts.footer')
         @include('sweetalert::alert')
         @livewireScripts
         <script>
@@ -47,5 +46,12 @@
         @stack('scripts')
     </div>
 </body>
+<footer>
+    <div class="text-center p-4" style="background-color: rgba(116, 255, 174, 0.473);">
+        © 2021 Copyright :
+        <a class="text-reset fw-bold" href="https://github.com/maulanadityaa"><i class="fab fa-github"></i>
+            maulanadityaa</a>
+    </div>
+</footer>
 
 </html>

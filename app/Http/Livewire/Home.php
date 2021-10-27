@@ -86,6 +86,6 @@ class Home extends Component
         }
         return view('livewire.home', [
             'products' => $products
-        ])->extends('layouts.app')->section('content');
+        ])->extends('layouts.appHome')->section('content');
     }
 }
