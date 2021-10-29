@@ -105,7 +105,8 @@ pass  : useruser
 
 
 ## Credit :credit_card:
-Please gimme a star :star:
+Please gimme a star :star:. <br>
+Feel free to request pull or add a discussion about this repository or even a bug report :call_me_hand:
 
 
 <!-- CONTACT -->
