@@ -43,11 +43,11 @@
 
 <!-- GETTING STARTED -->
 
-## Getting Started
+## Getting Started :wave:
 
 To get a local copy up and running follow these simple steps.
 
-### Prerequisites
+### Prerequisites :crossed_fingers:
 
 This is an example of how to list things you need to use the software and how to install them.
 
@@ -58,13 +58,13 @@ This is an example of how to list things you need to use the software and how to
 -   composer
 -   Apache2 and phpMyAdmin
 
-### Installation
+### Installation :pinched_fingers:
 
 1. Clone the repo
     ```sh
     git clone https://github.com/maulanadityaa/olshop-sepatu.git
     ```
-2. Edit and and few ENV Config
+2. Edit and add few ENV Config
     ```env
     MAIL_MAILER=smtp
     MAIL_HOST=smtp.googlemail.com
@@ -94,19 +94,23 @@ This is an example of how to list things you need to use the software and how to
 
 <!-- USAGE EXAMPLES -->
 
-## Usage
+## Usage :point_down:
 
-Demo WEB
+Demo WEB<br>
 http://demo-ecomshoes.herokuapp.com/
 
-Credential
-email : user@domain.com
+Credential<br>
+email : user@domain.com<br>
 pass  : useruser
+
+
+## Credit :credit_card:
+Please gimme a star :star:
 
 
 <!-- CONTACT -->
 
-## Contact
+## Contact :receipt:
 
 Maulana - [@waitasecs](https://twitter.com/waitasecs) - Instagram - [@maulanadityaa](https://instagram.com/maulanadityaa)
 
