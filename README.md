@@ -114,7 +114,7 @@ Please gimme a star :star:
 
 Maulana - [@waitasecs](https://twitter.com/waitasecs) - Instagram - [@maulanadityaa](https://instagram.com/maulanadityaa)
 
-Project Link: [https://github.com/maulanadityaa/wa-api-nodeJS](https://github.com/maulanadityaa/wa-api-nodeJS)
+Project Link: [https://github.com/maulanadityaa/olshop-sepatu](https://github.com/maulanadityaa/olshop-sepatu)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
