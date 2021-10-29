@@ -62,7 +62,7 @@ This is an example of how to list things you need to use the software and how to
 
 1. Clone the repo
     ```sh
-    git clone https://github.com/maulanadityaa/wa-api-nodeJS.git
+    git clone https://github.com/maulanadityaa/olshop-sepatu.git
     ```
 2. Edit and and few ENV Config
     ```env
