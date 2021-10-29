@@ -1,64 +1,129 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<!--
+*** Thanks for checking out the Best-README-Template. If you have a suggestion
+*** that would make this better, please fork the repo and create a pull request
+*** or simply open an issue with the tag "enhancement".
+*** Thanks again! Now go create something AMAZING! :D
+***
+***
+***
+*** To avoid retyping too much info. Do a search and replace for the following:
+*** github_username, repo_name, twitter_handle, email, project_title, project_description
+-->
 
+<!-- PROJECT SHIELDS -->
+<!--
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+-->
+
+<!-- PROJECT LOGO -->
+<br />
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+
+  <h3 align="center">Simple Shoes E-Commerce</h3>
+
+  <p align="center">
+    Simple ecommerce with livewire, turbolinks. Include RajaOngkir and Midtrans Integrations.
+    <br />
+    <a href="https://github.com/maulanadityaa/olshop-sepatu"><strong>Explore the docs »</strong></a>
+  </p>
 </p>
 
-## About Laravel
+### Built With
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+-   [Laravel 8](https://laravel.com/)
+-   [Livewire](https://laravel-livewire.com/)
+-   [Turbolinks](https://github.com/turbolinks/turbolinks)
+-   [RajaOngkir](https://rajaongkir.com/dokumentasi)
+-   [Midtrans](https://midtrans.com/)
+-   [SweetAlert2 by jantinnerezo](https://livewire-alert.jantinnerezo.com/)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<!-- GETTING STARTED -->
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Getting Started
 
-## Learning Laravel
+To get a local copy up and running follow these simple steps.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Prerequisites
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+This is an example of how to list things you need to use the software and how to install them.
 
-## Laravel Sponsors
+-   npm
+    ```sh
+    npm install npm@latest -g
+    ```
+-   composer
+-   Apache2 and phpMyAdmin
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Installation
 
-### Premium Partners
+1. Clone the repo
+    ```sh
+    git clone https://github.com/maulanadityaa/wa-api-nodeJS.git
+    ```
+2. Edit and and few ENV Config
+    ```env
+    MAIL_MAILER=smtp
+    MAIL_HOST=smtp.googlemail.com
+    MAIL_PORT=587
+    MAIL_USERNAME="Your Email"
+    MAIL_PASSWORD="Your Password"
+    MAIL_ENCRYPTION=tls
+    MAIL_FROM_ADDRESS="Your Email"
+    MAIL_FROM_NAME="SP-Shop"
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
+    APP_TIMEZONE=Asia/Jakarta
+    RAJAONGKIR_API_KEY="Your RajaOngkir API Key"
 
-## Contributing
+    MIDTRANS_MERCHAT_ID="Your Midtrans Merchant ID"
+    MIDTRANS_CLIENTKEY="Your Midtrans ClientKey"
+    MIDTRANS_SERVERKEY="Your Midtrans ServerKey"
+    ```
+3. Import `olshop-sepatu.sql` to your phpMyAdmin and run migration and seed
+4. Run
+    ```sh
+    npm install && npm run dev
+    ```
+5. Then
+    ```sh
+    php artisan serve
+    ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+<!-- USAGE EXAMPLES -->
 
-## Code of Conduct
+## Usage
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Demo WEB
+http://demo-ecomshoes.herokuapp.com/
 
-## Security Vulnerabilities
+Credential
+email : user@domain.com
+pass  : useruser
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+<!-- CONTACT -->
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Contact
+
+Maulana - [@waitasecs](https://twitter.com/waitasecs) - Instagram - [@maulanadityaa](https://instagram.com/maulanadityaa)
+
+Project Link: [https://github.com/maulanadityaa/wa-api-nodeJS](https://github.com/maulanadityaa/wa-api-nodeJS)
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
+[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo.svg?style=for-the-badge
+[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/github_username/repo.svg?style=for-the-badge
+[forks-url]: https://github.com/github_username/repo_name/network/members
+[stars-shield]: https://img.shields.io/github/stars/github_username/repo.svg?style=for-the-badge
+[stars-url]: https://github.com/github_username/repo_name/stargazers
+[issues-shield]: https://img.shields.io/github/issues/github_username/repo.svg?style=for-the-badge
+[issues-url]: https://github.com/github_username/repo_name/issues
+[license-shield]: https://img.shields.io/github/license/github_username/repo.svg?style=for-the-badge
+[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/github_username
