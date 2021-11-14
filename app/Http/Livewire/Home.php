@@ -8,22 +8,30 @@ use Livewire\Component;
 use App\Models\Produk;
 use App\Models\Belanja;
 use Livewire\WithPagination;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class Home extends Component
 {
     use WithPagination;
     public $search, $min, $max;
 
-    public function acak($panjang)
+    // public function acak($panjang)
+    // {
+    //     $karakter = '123456789';
+    //     $string = '';
+    //     for ($i = 0; $i < $panjang; $i++) {
+    //         $pos = rand(0, strlen($karakter) - 1);
+    //         $string .= $karakter{$pos};
+    //     }
+    //     return $string;
+    // }
+
+    public function mount()
     {
-        $karakter = '123456789';
-        $string = '';
-        for ($i = 0; $i < $panjang; $i++) {
-            $pos = rand(0, strlen($karakter) - 1);
-            $string .= $karakter{
-            $pos};
+        if(!Auth::user()->email_verified_at){
+            Alert::warning('Email Verification', 'Cek Email Anda untuk Konfirmasi Akun');
         }
-        return $string;
+            // dd(Auth::user()->email_verified_at);
     }
 
     public function beli($id)
@@ -37,7 +45,7 @@ class Home extends Component
         $produk->stock = $produk->stock - 1;
         $produk->save();
 
-        $belanja_id = $this->acak(8);
+        $belanja_id = mt_srand(8);
         // dd($belanja_id);
         Belanja::create(
             [
