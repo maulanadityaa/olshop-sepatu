@@ -28,8 +28,10 @@ class Home extends Component
 
     public function mount()
     {
-        if(!Auth::user()->email_verified_at){
-            Alert::warning('Email Verification', 'Cek Email Anda untuk Konfirmasi Akun');
+        if(Auth::user()){
+            if(!Auth::user()->email_verified_at){
+                Alert::warning('Email Verification', 'Cek Email Anda untuk Konfirmasi Akun');
+            }
         }
             // dd(Auth::user()->email_verified_at);
     }
